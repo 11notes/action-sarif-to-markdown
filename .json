@@ -11,7 +11,7 @@
   "readme":{
     "description":"Unifi Controller (DB included)",
     "parent":{
-      "image":"ubuntu:20.04"
+      "image":"11notes/alpine:stable"
     }
   }
 }
