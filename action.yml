@@ -1,0 +1,15 @@
+name: 'action-sarif-to-markdown'
+description: 'convert sarif to markdown'
+inputs:
+  sarif:
+    description: 'sarif file to parse'
+    required: true
+    default: ''
+outputs:
+  markdown:
+    description: 'markdown output'
+runs:
+  using: 'docker'
+  image: '11notes/sarif-to-markdown-table'
+  args:
+    - ${{ inputs.sarif }}
