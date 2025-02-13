@@ -1,10 +1,11 @@
 # :: Build / sarif-to-markdown-table 
   FROM golang:1.23-alpine AS build
+  ARG TARGETARCH
   COPY ./go/ /go/sarif-to-markdown-table 
   RUN set -ex; \
     cd /go/sarif-to-markdown-table; \
     go mod tidy; \
-    GOOS=linux GOARCH=amd64 go build -o /usr/local/bin/sarif-to-markdown-table .;
+    GOOS=linux GOARCH=${TARGETARCH} go build -o /usr/local/bin/sarif-to-markdown-table .;
 
 # :: Header
   FROM 11notes/alpine:stable
