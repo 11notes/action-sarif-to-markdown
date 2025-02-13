@@ -1,11 +1,16 @@
 # :: Build / sarif-to-markdown-table 
-FROM golang:1.23-alpine AS build
-COPY ./go /
-RUN set -ex; \
-  GOOS=linux GOARCH=amd64 go build -o /usr/local/bin/sarif-to-markdown-table .;
+  FROM golang:1.23-alpine AS build
+  COPY ./go/ /go/sarif-to-markdown-table 
+  RUN set -ex; \
+    cd /go/sarif-to-markdown-table; \
+    go mod tidy; \
+    GOOS=linux GOARCH=amd64 go build -o /usr/local/bin/sarif-to-markdown-table .;
 
 # :: Header
   FROM 11notes/alpine:stable
+
+# :: Run
+  USER root
 
   # :: arguments
     ARG TARGETARCH
@@ -25,11 +30,15 @@ RUN set -ex; \
   # :: multi-stage
     COPY --from=build /usr/local/bin/ /usr/local/bin
 
+  # :: install application
+    RUN set -ex; \
+      mkdir -p ${APP_ROOT};
+
   # :: copy filesystem changes and set correct permissions
     COPY ./rootfs /
     RUN set -ex; \
       chmod +x -R /usr/local/bin; \
-      chown -R ${APP_UID}:${APP_GID} \
+      chown -R 1000:1000 \
         ${APP_ROOT};
 
 # :: Start

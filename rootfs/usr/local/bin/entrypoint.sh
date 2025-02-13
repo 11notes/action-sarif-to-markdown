@@ -1,3 +1,3 @@
 #!/bin/ash
-  echo "${1}" | sarif-to-markdown-table > ${APP_ROOT}/SARIF.md
-  echo "markdown=$(cat ${APP_ROOT}/SARIF.md)" >> $GITHUB_OUTPUT
+  echo "${1}" | sarif-to-markdown-table > ${APP_ROOT}/sarif.md
+  echo "markdown=$(cat ${APP_ROOT}/sarif.md)" >> $GITHUB_OUTPUT

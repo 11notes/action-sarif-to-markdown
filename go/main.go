@@ -25,7 +25,7 @@ func main() {
 	fmt.Print("## Security Vulnerabilities\n\n")
 
 	// Loop through all the runs in the SARIF input
-	for runIndex, run := range sarif.Runs {
+	for _, run := range sarif.Runs {
 		tw := table.NewWriter()
 		tw.AppendHeader(table.Row{
 			"Rule ID",
