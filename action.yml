@@ -10,6 +10,6 @@ outputs:
     description: 'markdown output'
 runs:
   using: 'docker'
-  image: '11notes/sarif-to-markdown-table'
+  image: 'docker://11notes/sarif-to-markdown-table'
   args:
     - ${{ inputs.sarif_file }}

@@ -26,7 +26,7 @@ Markdown output.
 - name: grype / sarif to markdown
   if: success() || failure()
   id: sariftomarkdown
-  uses: 11notes/action-sarif-to-markdown@v1
+  uses: 11notes/action-sarif-to-markdown@v1.0.0
   with:
     sarif_file: ${{ steps.scan.outputs.sarif }}
 
