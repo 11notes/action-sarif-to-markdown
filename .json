@@ -9,7 +9,7 @@
   },
 
   "readme":{
-    "description":"Unifi Controller (DB included)",
+    "description":"convert sarif to markdown table",
     "parent":{
       "image":"11notes/alpine:stable"
     }
