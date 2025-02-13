@@ -1,21 +1,21 @@
-# Hello world docker action
+# 11notes/action-sarif-to-markdown
 
-This action prints "Hello World" or "Hello" + the name of a person to greet to the log.
+This action converts a provided sarif file into a markdown table.
 
 ## Inputs
 
-## `who-to-greet`
+## `sarif_file`
 
-**Required** The name of the person to greet. Default `"World"`.
+**Required** sarif file to parse.
 
 ## Outputs
 
-## `time`
+## `markdown`
 
-The time we greeted you.
+Markdown output.
 
 ## Example usage
 
-uses: actions/hello-world-docker-action@v2
+uses: 11notes/action-sarif-to-markdown@v1
 with:
-  who-to-greet: 'Mona the Octocat'
+  sarif_file: ${{ steps.scan.outputs.sarif }}
