@@ -1,13 +1,12 @@
 name: 'action-sarif-to-markdown'
-description: 'convert sarif to markdown'
+description: 'convert sarif to markdown via docker image 11notes/sarif-to-markdown-table'
 inputs:
   sarif_file:
-    description: 'sarif file to parse'
+    description: 'sarif file to parse. Must be in /github/home inside the container image.'
     required: true
-    default: ''
 outputs:
   markdown:
-    description: 'markdown output'
+    description: 'Markdown output. Will also output sarif.md into /github/home > ${{ runner.temp }}/_github_home'
 runs:
   using: 'docker'
   image: 'docker://11notes/sarif-to-markdown-table'
