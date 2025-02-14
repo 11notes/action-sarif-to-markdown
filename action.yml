@@ -6,7 +6,7 @@ inputs:
     required: true
 outputs:
   markdown:
-    description: 'Markdown output. Will also output sarif.md into /github/home > ${{ runner.temp }}/_github_home'
+    description: 'Markdown output. Will also output sarif.md into /github/home'
 runs:
   using: 'docker'
   image: 'docker://11notes/sarif-to-markdown-table'
